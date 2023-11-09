@@ -6,7 +6,7 @@ using UnityEngine;
 public class ToggleExtraForce : MonoBehaviour
 {
     public static event Action<bool> OnToggle;
-    //Animation Events
+    //triggered through Animation Events
     public void EnableExtraForce() {
         OnToggle?.Invoke(true);
     }

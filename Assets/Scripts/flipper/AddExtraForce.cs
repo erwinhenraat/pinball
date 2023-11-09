@@ -21,7 +21,6 @@ public class AddExtraForce : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-
         if (extraForce) { 
             Vector3 explosionPosition = new Vector3();
             explosionPosition = collision.transform.position;
@@ -31,8 +30,7 @@ public class AddExtraForce : MonoBehaviour
             Debug.Log(transform.up * force);
             //collision.rigidbody.AddRelativeForce(transform.up*force, ForceMode.Force);
             collision.rigidbody.AddForce(transform.up * force);
-            //collision.rigidbody.AddForce(0,force/2,force);
-            
+            //collision.rigidbody.AddForce(0,force/2,force);            
         }
     }
     private void Toggle(bool state) { 
