@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class AddExtraForce : MonoBehaviour
 {
-    private bool extraForce = false;
+    private float forceModifier = 0;
     public float force = 100f;
-    public float range = 1f;
+   
     // Start is called before the first frame update
     void Start()
     {
-        ToggleExtraForce.OnToggle += Toggle;
+        SetForceModifier.OnChangeModifier += ChangeModifier;
     }
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class AddExtraForce : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (extraForce) { 
+        if (forceModifier!=0) { 
             Vector3 explosionPosition = new Vector3();
             explosionPosition = collision.transform.position;
             explosionPosition.y -= collision.transform.localScale.y;
@@ -29,12 +29,12 @@ public class AddExtraForce : MonoBehaviour
 
             Debug.Log(transform.up * force);
             //collision.rigidbody.AddRelativeForce(transform.up*force, ForceMode.Force);
-            collision.rigidbody.AddForce(transform.up * force);
+            collision.rigidbody.AddForce(transform.up * (force * forceModifier));
             //collision.rigidbody.AddForce(0,force/2,force);            
         }
     }
-    private void Toggle(bool state) { 
-        extraForce = state;
+    private void ChangeModifier(float modifier) { 
+        forceModifier = modifier;
     }
    
 }
