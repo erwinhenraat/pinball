@@ -14,7 +14,7 @@ public class Tilt : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.T)) {
-            Debug.Log("Tilting");
+            Debug.Log("Tilting!");
         }
     }
 }
